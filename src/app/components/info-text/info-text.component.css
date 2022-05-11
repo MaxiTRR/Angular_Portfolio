@@ -1,0 +1,29 @@
+.info-text{
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column nowrap;
+}
+
+#name{
+    font-size: 3.125rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#profesion{
+    font-size: 2rem;
+}
+
+#pencil-info{
+    height: 100%;
+    padding: 0; 
+}
+
+#pencil-info button{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    margin-right: 20px;
+}

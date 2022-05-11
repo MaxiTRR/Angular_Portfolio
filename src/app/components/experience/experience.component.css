@@ -1,0 +1,22 @@
+#exp{
+    background-color: #212529;
+}
+
+#exp-card{
+    
+}
+
+#exp-title{
+    font-size:3.125rem;
+    font-weight: 700;
+}
+
+#amazon{
+    width: 22.688rem;
+    height: 6.484rem;
+}
+
+.exp-img{
+    display: flex;
+    justify-content: center;
+}

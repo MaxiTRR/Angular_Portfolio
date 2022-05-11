@@ -1,0 +1,28 @@
+/*Educacion*/
+
+#edu-title-principal{
+    font-size:3.125rem;
+    font-weight: 700;
+}
+
+.edu-title{
+    font-size: 2.50rem;
+}
+
+#edu{
+    background-color: #212529;
+}
+
+#udemy{
+    width: 12.688rem;
+    height: 6.484rem;
+}
+
+#tel-img{
+    margin-top: 50px;
+}
+
+#arg-pro{
+    width: 22.688rem;
+    height: 13.484rem;
+}

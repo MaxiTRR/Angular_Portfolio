@@ -1,0 +1,33 @@
+/*Skills*/
+
+#skills-title{
+    font-size:3.125rem;
+    font-weight: 700;
+}
+
+#skills{
+    background-color: #212529;
+}
+
+#skills-card{
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+
+.skill-title{
+    color:#fff;
+    margin: 1.24rem 0;
+    text-align: center;
+}
+
+#pencil-info{
+    padding: 0; 
+}
+
+#pencil-info button{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    margin-right: 20px;
+}

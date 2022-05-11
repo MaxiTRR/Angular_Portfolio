@@ -1,0 +1,22 @@
+#udemy{
+    width: 12.688rem;
+    height: 6.484rem;
+}
+
+#pencil-info{
+    margin-top: 10px;
+    padding: 0; 
+}
+
+#pencil-info button{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    margin-right: 20px;
+}
+
+.edu-title{
+    font-size:2.125rem;
+    font-weight: 700;
+}
