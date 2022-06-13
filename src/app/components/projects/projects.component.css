@@ -1,10 +1,15 @@
 /*Proyectos*/
-
-#proyectos{
-    background-color: #212529;
+#project-title{
+    font-size:3.125rem;
+    font-weight: 700;
 }
 
-#project-card{
+.project-card-dark{
     border: 1px solid #fff;
+    border-radius: 15px;
+}
+
+.project-card-light{
+    border: 1px solid #000;
     border-radius: 15px;
 }

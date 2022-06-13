@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
 
@@ -10,6 +10,8 @@ import { faXmark} from '@fortawesome/free-solid-svg-icons';
 export class SkillsComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
+
+  @Input() childMessage:boolean = false;
 
   constructor() { }
 

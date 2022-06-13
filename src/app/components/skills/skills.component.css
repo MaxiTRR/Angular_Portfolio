@@ -5,17 +5,17 @@
     font-weight: 700;
 }
 
-#skills{
-    background-color: #212529;
-}
-
-#skills-card{
+.skills-card-dark{
     border: 1px solid #fff;
     border-radius: 15px;
 }
 
+.skills-card-light{
+    border: 1px solid #000;
+    border-radius: 15px;
+}
+
 .skill-title{
-    color:#fff;
     margin: 1.24rem 0;
     text-align: center;
 }

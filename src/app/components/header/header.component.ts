@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -15,9 +15,17 @@ export class HeaderComponent implements OnInit {
   faGithub = faGithub;
   faInstagram = faInstagram;
 
+  @Output() darkMode = new EventEmitter<boolean>();
+  setDark = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sendClickEvent(){
+    this.setDark = !this.setDark;
+    this.darkMode.emit(this.setDark);
   }
 
 }

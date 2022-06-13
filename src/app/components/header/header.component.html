@@ -21,6 +21,15 @@
                     <a href=""><fa-icon class="social-icon" [icon]="faInstagram"></fa-icon></a>
 
                     <button id="login" class="btn btn-outline-success text-white" type="submit">Login</button>
+
+                    <button 
+                        id="switch" 
+                        class="btn btn-light" 
+                        type="submit"
+                        (click)="sendClickEvent()"
+                        >    
+                        Switch Mode
+                    </button>
                 </div>
             </div>
         </div>

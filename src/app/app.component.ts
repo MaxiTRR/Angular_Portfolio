@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PortfolioAngular';
+
+  setMode = false;
+
+  receiveMode(setDark:boolean){
+    this.setMode = setDark;
+    console.log(this.setMode)
+  }
 }
