@@ -24,10 +24,16 @@
     padding: 0; 
 }
 
-#pencil-info button{
+#edit #delete{
     background-color: transparent;
     border: none;
     color: #fff;
-    font-size: 2rem;
+    /*font-size: 2rem;*/
     margin-right: 20px;
 }
+
+#btn-icon{
+    color:#fff;
+    font-size: 2rem;
+}
+
