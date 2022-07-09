@@ -15,15 +15,23 @@
     font-size: 2rem;
 }
 
-#pencil-info{
-    height: 100%;
-    padding: 0; 
-}
 
-#pencil-info button{
+/* CLASES PARA EL MODAL*/
+
+#edit1 #delete1{
     background-color: transparent;
     border: none;
-    color: #fff;
-    font-size: 2rem;
+    /*color: #fff;
+    /*font-size: 2rem;*/
     margin-right: 20px;
+}
+
+.btn-icon-dark{
+    color:#fff;
+    font-size: 2rem;
+}
+
+.btn-icon-light{
+    color:#000;
+    font-size: 2rem;
 }

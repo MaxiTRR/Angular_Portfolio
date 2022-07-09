@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+//CAMBIAR NOMBRE DEL SERVICE, ESTE SERVICE SIRVE PARA TODOS LOS COMPONENTES!!!!
+
 @Injectable({
   providedIn: 'root'
 })

@@ -3,7 +3,8 @@
         <div class="container pb-5">
             <h2 id="skills-title" class="h2 text-center">Skills</h2>
             <div 
-                [ngClass]="childMessage === false? 'skills-card-dark': 'skills-card-light'" class="row pt-5 pb-5 d-flex justify-content-center"
+                [ngClass]="childMessage === false? 'skills-card-dark': 'skills-card-light'"
+                class="row pt-5 pb-5 d-flex justify-content-center"
                 *ngFor="let row of skillData"
                 >
                 <div class="col-md-8">
@@ -29,16 +30,17 @@
                                 class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                             
                                 >
-                                <fa-icon id="" [icon]="faPencil"></fa-icon>
+                                <fa-icon [icon]="faPencil"></fa-icon>
                             </button>
 
                             <!-- Boton para eliminar el contenido-->
                             <button 
                                 [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
                                 id="delete" 
+                                type="button"
                                 class="btn"
                                 >
-                                <fa-icon id="" [icon]="faXmark"></fa-icon>
+                                <fa-icon [icon]="faXmark"></fa-icon>
                             </button>
                         </div>
 

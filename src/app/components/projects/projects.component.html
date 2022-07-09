@@ -9,8 +9,27 @@
             <p>Año: 2022</p>
             <p>Sitio oficial de la Veterina Cuki, lider en la atencion de tus mascotas.</p>
             <a class="btn btn-light" href="#" role="button">Ver Proyecto</a>
+            <button
+                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+                id="edit" 
+                type="button" 
+                class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            
+                >
+                <fa-icon [icon]="faPencil"></fa-icon>
+            </button>
+
+            <!-- Boton para eliminar el contenido-->
+            <button 
+                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+                id="delete" 
+                type="button"
+                class="btn"
+                >
+                <fa-icon [icon]="faXmark"></fa-icon>
+            </button>
         </div>
     </div>
-
+</section>
     
-<section></section>
+

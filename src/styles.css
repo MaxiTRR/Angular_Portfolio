@@ -15,12 +15,11 @@
     height: 100%;
 }
 
-#pencil button{
+/*#pencil button{
     background-color: transparent;
     border: none;
-    color: #fff;
     font-size: 4rem;
-}
+}*/
 
 .form-typo{
     color:black;

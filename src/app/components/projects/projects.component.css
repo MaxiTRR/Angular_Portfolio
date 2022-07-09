@@ -18,3 +18,23 @@
     border: 1px solid #000;
     border-radius: 15px;
 }
+
+/*BOTONES*/
+
+#edit #delete{
+    background-color: transparent;
+    border: none;
+    /*color: #fff;*/
+    /*font-size: 2rem;*/
+    margin-right: 20px;
+}
+
+.btn-icon-dark{
+    color:#fff;
+    font-size: 2rem;
+}
+
+.btn-icon-light{
+    color:#000;
+    font-size: 2rem;
+}

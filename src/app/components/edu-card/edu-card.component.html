@@ -15,11 +15,21 @@
         </div>
 
         <div id="pencil-info" class="container-fluid">
-            <button>
+            <button
+                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+                id="edit" 
+                type="button" 
+                class="btn"
+                >
                 <fa-icon [icon]="faPencil"></fa-icon>
             </button>
         
-            <button>
+            <button
+                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+                id="delete" 
+                type="button" 
+                class="btn"
+            >
                 <fa-icon [icon]="faXmark"></fa-icon>
             </button>
         </div>
