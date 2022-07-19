@@ -4,6 +4,8 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram} from '@fortawesome/free-brands-svg-icons';
 
+import { ChangeStyleService } from 'src/app/services/change-style.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,16 +18,16 @@ export class HeaderComponent implements OnInit {
   faInstagram = faInstagram;
 
   @Output() darkMode = new EventEmitter<boolean>();
-  setDark = false;
+  data = false;
 
-  constructor() { }
+  constructor(private changeStyleService:ChangeStyleService) { }
 
   ngOnInit(): void {
   }
 
   sendClickEvent(){
-    this.setDark = !this.setDark;
-    this.darkMode.emit(this.setDark);
+    this.data = !this.data;
+    this.changeStyleService.changeData(this.data);
   }
 
 }

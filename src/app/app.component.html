@@ -1,15 +1,15 @@
-<div [ngClass]="setMode === false? 'darkMode' : 'lightMode'">
-    <app-header (darkMode)="receiveMode($event)"></app-header>
+<div [ngClass]="data === false? 'darkMode' : 'lightMode'">
+    <app-header></app-header>
     
     <app-info></app-info>
     
     <app-experience></app-experience>
     
-    <app-education [childMessage] ="setMode"></app-education>
+    <app-education></app-education>
     
-    <app-skills [childMessage] ="setMode"></app-skills>
+    <app-skills></app-skills>
     
-    <app-projects [childMessage] ="setMode"></app-projects>
+    <app-projects></app-projects>
     
     <app-footer></app-footer>
 </div>

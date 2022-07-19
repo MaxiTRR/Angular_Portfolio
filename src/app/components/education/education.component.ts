@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
+
+import { ChangeStyleService } from 'src/app/services/change-style.service';
 
 @Component({
   selector: 'app-education',
@@ -10,13 +13,16 @@ import { faXmark} from '@fortawesome/free-solid-svg-icons';
 export class EducationComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
+
+  data:boolean = false;
   
-  @Input() childMessage:boolean = false;
+  //@Input() childMessage:boolean = false;
   
 
-  constructor() { }
+  constructor(private changeStyleService:ChangeStyleService) { }
 
-  ngOnInit(): void {
+  public ngOnInit():void{
+    this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { ChangeStyleService } from 'src/app/services/change-style.service';
+
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
 
@@ -11,12 +13,15 @@ import { faXmark} from '@fortawesome/free-solid-svg-icons';
 export class ProjectsComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
+
+  data:boolean = false;
   
-  @Input() childMessage:boolean = false;
+ //@Input() childMessage:boolean = false;
 
-  constructor() { }
+  constructor(private changeStyleService:ChangeStyleService) { }
 
-  ngOnInit(): void {
+  public ngOnInit():void{
+    this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
 
 }

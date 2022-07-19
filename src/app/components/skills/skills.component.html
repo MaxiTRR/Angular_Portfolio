@@ -3,7 +3,7 @@
         <div class="container">
             <h2 id="skills-title" class="h2 text-center">Skills</h2>
             <div 
-                [ngClass]="childMessage === false? 'skills-card-dark': 'skills-card-light'"
+                [ngClass]="data === false? 'skills-card-dark': 'skills-card-light'"
                 class="row pt-5 pb-5 d-flex justify-content-center"
                 *ngFor="let row of skillData"
                 >
@@ -25,7 +25,7 @@
                         <!-- Boton para editar el contenido-->
                         <div class="container-fluid text-center">
                             <button
-                                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+                                [ngClass]="data=== false? 'btn-icon-dark': 'btn-icon-light'" 
                                 id="edit" 
                                 type="button" 
                                 class="btn" 
@@ -36,7 +36,7 @@
 
                             <!-- Boton para eliminar el contenido-->
                             <button 
-                                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+                                [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
                                 id="delete" 
                                 type="button"
                                 class="btn"

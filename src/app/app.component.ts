@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+
+import { ChangeStyleService } from './services/change-style.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'PortfolioAngular';
 
-  setMode = false;
+  constructor(private changeStyleService:ChangeStyleService) {}
 
-  receiveMode(setDark:boolean){
-    this.setMode = setDark;
-    console.log(this.setMode)
+  data:boolean = false;
+
+  public ngOnInit():void{
+    this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
+
+  //setMode = false;
+
+  //receiveMode(setDark:boolean){
+  //  this.setMode = setDark;
+  //  console.log(this.setMode)
+  //}
 }

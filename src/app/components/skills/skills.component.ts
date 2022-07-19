@@ -5,6 +5,7 @@ import { Skill } from '../../interfaces/Skill'
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ApiService } from 'src/app/services/api.service';
+import { ChangeStyleService } from 'src/app/services/change-style.service';
 
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
@@ -23,10 +24,12 @@ export class SkillsComponent implements OnInit {
   skillModelObj:SkillModel = new SkillModel();
   skillData!:any;
 
-  
-  @Input() childMessage:boolean = false;
+  data:boolean = false;
 
-  constructor(private formBuilder:FormBuilder, private api:ApiService) { }
+  
+  //@Input() childMessage:boolean = false;
+
+  constructor(private formBuilder:FormBuilder, private api:ApiService, private changeStyleService:ChangeStyleService) { }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -35,7 +38,11 @@ export class SkillsComponent implements OnInit {
     })
 
     this.getAllSkill();
+
+    this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
+
+ 
 
   postSkillDetails(){
     this.skillModelObj.nombre = this.formValue.value.nombre;

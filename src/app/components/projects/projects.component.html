@@ -2,7 +2,7 @@
     <div id="project" class="container-fluid text-center">
         <h2 id="project-title" class="h2">Proyectos</h2>
         
-        <div [ngClass]="childMessage === false? 'project-card-dark': 'project-card-light'"
+        <div [ngClass]="data === false? 'project-card-dark': 'project-card-light'"
             class="container pb-5"
             >
             <h3 class="pt-5">Web site Veterinaria Cuki</h3>
@@ -10,7 +10,7 @@
             <p>Sitio oficial de la Veterina Cuki, lider en la atencion de tus mascotas.</p>
             <a class="btn btn-light" href="#" role="button">Ver Proyecto</a>
             <button
-                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+                [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'" 
                 id="edit" 
                 type="button" 
                 class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -21,7 +21,7 @@
 
             <!-- Boton para eliminar el contenido-->
             <button 
-                [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+                [ngClass]="data=== false? 'btn-icon-dark': 'btn-icon-light'"
                 id="delete" 
                 type="button"
                 class="btn"

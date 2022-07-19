@@ -4,13 +4,13 @@
         <h2 id="edu-title" class="h2">Educacion</h2>
         
         
-        <div [ngClass]="childMessage === false? 'edu-card-dark': 'edu-card-light'"
+        <div [ngClass]="data === false? 'edu-card-dark': 'edu-card-light'"
              class="card mx-auto"
              style="width: 18rem;"
              id="edu-card"
              >
              <img class="card-img-top mx-auto" id="udemy" src="../../../assets/Udemy Logo.png">
-             <div [ngClass]="childMessage === false? 'edu-card-dark': 'edu-card-light'">
+             <div [ngClass]="data === false? 'edu-card-dark': 'edu-card-light'">
                 <h5 class="card-title">Udemy</h5>
                 <p class="card-text">Año: 2021</p>
                 <p class="card-text">Aprende CSS completo 2021 (7.5 hs)</p>
@@ -19,7 +19,7 @@
 
                 <!-- Boton para editar el contenido-->
                 <button
-                    [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+                    [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'" 
                     id="edit" 
                     type="button" 
                     class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -29,7 +29,7 @@
 
                 <!-- Boton para eliminar el contenido-->
                 <button 
-                    [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+                    [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
                     id="delete" 
                     type="button"
                     class="btn"
@@ -41,7 +41,7 @@
 
         <!--Boton para agregar estudio-->
         <button 
-            [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+            [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
             class="btn-add-new"
             data-bs-toggle="modal" data-bs-target="#exampleModal"
             >

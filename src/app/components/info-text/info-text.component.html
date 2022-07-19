@@ -7,7 +7,7 @@
     <!-- Boton para editar la Informacion-->
     <div class="pencil-info container-fluid">
         <button 
-            [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+            [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'" 
             id="edit"
             type="button"
             class="btn"
@@ -16,7 +16,7 @@
         </button>
 
         <button 
-            [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+            [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
             id="delete" 
             class="btn"
             >
