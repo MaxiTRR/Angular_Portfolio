@@ -1,8 +1,10 @@
 /*Skills*/
 
 #skills-title{
-    font-size:3.125rem;
+    font-size:2rem;
     font-weight: 700;
+    margin-bottom: 80px;
+    letter-spacing: 15px;
 }
 
 .skills-card-dark{
@@ -22,6 +24,13 @@
 
 #pencil-info{
     padding: 0; 
+}
+
+.btn-add-new{
+    font-size: 20px;
+    border-radius: 30px;
+    margin-top: 60px;
+    padding: 20px;
 }
 
 #edit #delete{

@@ -1,6 +1,6 @@
 .logo{
     width: auto;
-    height: 100px;
+    height: 60px;
 }
 
 #login{
@@ -13,13 +13,35 @@
     color: black;
 }
 
+.social-links{
+    display: flex;
+}
+
+@media (max-width: 360px){
+    .items{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .social-links{
+        flex-direction: column;
+    }
+
+    .navbar-toggler{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    } 
+}
+
 
 #banner{
     color: #fff;
 }
 
 .banner{
-    height:1000px;
+    height:500px;
     width: auto;
     background: url("../../../assets/banner.jpg");
     background-size: cover;
@@ -27,7 +49,7 @@
 }
 
 #banner-name{
-    font-size: 3.75rem;
+    font-size: 2.75rem;
     margin-left: 10px;
 }
 

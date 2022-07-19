@@ -5,8 +5,10 @@
 }
 
 #project-title{
-    font-size:3.125rem;
+    font-size:2rem;
     font-weight: 700;
+    margin-bottom: 80px;
+    letter-spacing: 15px;
 }
 
 .project-card-dark{

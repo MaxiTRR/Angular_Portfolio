@@ -1,11 +1,86 @@
 <!--Educacion-->
-<section>
-    <div id="edu" class="container-fluid">
-        <div class="row text-center pt-5 pb-5">
-            <h2 id="edu-title-principal" class="h2 exp-title">Educacion</h2>
+<section id="educacion">
+    <div  class="container-fluid text-center">
+        <h2 id="edu-title" class="h2">Educacion</h2>
+        
+        
+        <div [ngClass]="childMessage === false? 'edu-card-dark': 'edu-card-light'"
+             class="card mx-auto"
+             style="width: 18rem;"
+             id="edu-card"
+             >
+             <img class="card-img-top mx-auto" id="udemy" src="../../../assets/Udemy Logo.png">
+             <div [ngClass]="childMessage === false? 'edu-card-dark': 'edu-card-light'">
+                <h5 class="card-title">Udemy</h5>
+                <p class="card-text">Año: 2021</p>
+                <p class="card-text">Aprende CSS completo 2021 (7.5 hs)</p>
+                <p class="card-text">Instructor Manuel Gomez Martinez</p>
+
+
+                <!-- Boton para editar el contenido-->
+                <button
+                    [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'" 
+                    id="edit" 
+                    type="button" 
+                    class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                >
+                    <fa-icon [icon]="faPencil"></fa-icon>
+                </button>
+
+                <!-- Boton para eliminar el contenido-->
+                <button 
+                    [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+                    id="delete" 
+                    type="button"
+                    class="btn"
+                    >
+                    <fa-icon [icon]="faXmark"></fa-icon>
+                </button>
+             </div>
         </div>
-        <div class="row pt-5 pb-5">
-            <app-edu-card></app-edu-card>
+
+        <!--Boton para agregar estudio-->
+        <button 
+            [ngClass]="childMessage === false? 'btn-icon-dark': 'btn-icon-light'"
+            class="btn-add-new"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
+            >
+            Añadir nuevo estudio
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Skill Info
+                        </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario-->
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-typo form-label">¿Que Skill deseas agregar?</label>
+                                <input type="text" formControlName = "nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <br>
+                                <label for="exampleInputEmail1" class="form-typo form-label">¿En que nivel de esta Skill consideras que te encontras?</label>
+                                <input type="number" formControlName = "nivel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            </div>
+                        </form>
+                    ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Actualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
