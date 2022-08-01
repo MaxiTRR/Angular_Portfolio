@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 })
 export class ApiService {
 
+  // ESTE SERVICE ES EL ESPECIFICO PARA SKILLS!!!! (CAMBIAR NOMBRE)
+
   constructor( private http:HttpClient) { }
 
   postSkill(data:any){
