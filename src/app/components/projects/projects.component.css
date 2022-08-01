@@ -40,3 +40,23 @@
     color:#000;
     font-size: 2rem;
 }
+
+.btn-add-new{
+    font-size: 20px;
+    border-radius: 30px;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.btn-icon-darkAdd{
+    color:#000;
+}
+
+.btn-icon-lightAdd{
+    color:#fff;
+    background-color: #000;
+}
+
+.modal-title{
+    color: #000;
+}

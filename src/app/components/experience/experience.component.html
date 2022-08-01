@@ -25,4 +25,81 @@
             </div>
         </div>
     </div>
+
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModalExp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Experiencia Info
+                    </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario-->
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-typo form-label">¿Cual experiencia deseas agregar?</label>
+                            <input type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <br>
+                            <label for="exampleInputEmail1" class="form-typo form-label">¿Que año/periodo de experiencia deseas agregar?</label>
+                            <input type="number"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <br>
+                            <label for="exampleInputEmail1" class="form-typo form-label">¿Que titulo de experiencia deseas agregar?</label>
+                            <input type="number"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <br>
+                            <label for="exampleInputEmail1" class="form-typo form-label">¿Que tipo de descripcion de experienciadeseas agregar?</label>
+                            <input type="number"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                        </div>
+                    </form>
+                ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Boton para agregar nueva experiencia-->
+    <div class="container d-flex justify-content-center">
+        <button 
+            [ngClass]="data === false? 'btn-icon-darkAdd': 'btn-icon-lightAdd'"
+            class="btn-add-new mx-auto"
+            data-bs-toggle="modal" data-bs-target="#exampleModalExp"
+            >
+            Añadir nueva experiencia
+        </button>
+    </div>
+    
+    <!-- Boton para editar el contenido-->
+    <div class="container-fluid">
+        <div class="text-center">
+            <button
+            [ngClass]="data=== false? 'btn-icon-dark': 'btn-icon-light'" 
+            id="edit" 
+            type="button" 
+            class="btn" 
+        
+            >
+            <fa-icon [icon]="faPencil"></fa-icon>
+            </button>
+
+            <!-- Boton para eliminar el contenido-->
+            <button 
+                [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
+                id="delete" 
+                type="button"
+                class="btn"
+                >
+                <fa-icon [icon]="faXmark"></fa-icon>
+            </button>
+        </div>
+    </div>
 </section>

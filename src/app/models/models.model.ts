@@ -29,6 +29,7 @@ export class Educacion{
     nombreInst:string = '';
     periodo:string = '';
     titulo:string = '';
+    descripcion:string = '';
     //certificado:string = '';
     //logo:string = '';
 }
@@ -51,4 +52,9 @@ export class InfoPersoanl{
 
 export class Proyectos{
     id:number = 0;
+    tituloPro:string = '';
+    periodoPro:string = '';
+    descripcionPro:string = '';
+    //imgProject:string ='';
+
 }
