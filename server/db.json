@@ -39,8 +39,9 @@
     {
       "id": 1,
       "nombreInst": "Udemy",
-      "periodo": "Enero 2022 - Marzo 2022",
-      "titulo": "Desarrollador en HTML y CSS",
+      "periodoEdu": "Enero 2022 - Marzo 2022",
+      "tituloEdu": "Desarrollador en HTML y CSS",
+      "descripcionEdu": "lorem Ipsum",
       "certificado": "URL_del_certificado",
       "logo": "URL_del_logo_institucional"
     }
@@ -85,9 +86,10 @@
   "proyectos": [
     {
       "id": 1,
-      "nombre": "Veterinaria Cuki",
-      "tipo": "Desarrollo web HTML, CSS, JAVASCRIPT",
-      "descripcion": "Pagina oficial de contacto de la Veterinaria Cuki, una de las veterinarias mas reconocidas de la Argentina",
+      "tituloPro": "Veterinaria Cuki",
+      "tipoPro": "Desarrollo web HTML, CSS, JAVASCRIPT",
+      "periodoPro": "Año 2021",
+      "descripcionPro": "Pagina oficial de contacto de la Veterinaria Cuki, una de las veterinarias mas reconocidas de la Argentina",
       "imgProyecto": "URL_de_captura"
     }
   ],

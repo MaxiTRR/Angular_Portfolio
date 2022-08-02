@@ -36,9 +36,9 @@ export class Direccion{
 export class Educacion{
     id:number = 0;
     nombreInst:string = '';
-    periodo:string = '';
-    titulo:string = '';
-    descripcion:string = '';
+    periodoEdu:string = '';
+    tituloEdu:string = '';
+    descripcionEdu:string = '';
     //certificado:string = '';
     //logo:string = '';
 }
@@ -52,7 +52,7 @@ export class Exp{
     //logo:string = '';
 }
 
-export class InfoPersoanl{
+export class InfoPersonal{
     id:number = 0;
     nombreInfo:string = '';
     titulo:string ='';

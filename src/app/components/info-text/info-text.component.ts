@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { InfoPersonal } from 'src/app/models/models.model';
+
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
 
@@ -14,13 +18,23 @@ export class InfoTextComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
 
+  formValue!: FormGroup;
+  infoTextModelObj:InfoPersonal = new InfoPersonal();
+  infoTextData!:any;
+
   data:boolean = false;
 
-  //@Input() childMessage:boolean = false;
-
-  constructor(private changeStyleService:ChangeStyleService) { }
+  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder) { }
 
   public ngOnInit():void{
+    this.formValue = this.formBuilder.group({
+      nombreInfo: [''],
+      titulo: [''],
+      descripcion: ['']
+    })
+    
+    
+    //Metodo para el cambio de Dark-Light theme
     this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
 

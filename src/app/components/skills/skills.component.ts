@@ -26,9 +26,6 @@ export class SkillsComponent implements OnInit {
 
   data:boolean = false;
 
-  
-  //@Input() childMessage:boolean = false;
-
   constructor(private formBuilder:FormBuilder, private api:ApiService, private changeStyleService:ChangeStyleService) { }
 
   ngOnInit(): void {
@@ -39,6 +36,7 @@ export class SkillsComponent implements OnInit {
 
     this.getAllSkill();
 
+    //Metodo para el cambio de Dark-Light theme
     this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
 

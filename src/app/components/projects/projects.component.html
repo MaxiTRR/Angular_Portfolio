@@ -52,16 +52,19 @@
                 </div>
                 <div class="modal-body">
                     <!-- Formulario-->
-                    <form>
+                    <form [formGroup]="formValue">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que proyecto deseas agregar?</label>
-                            <input type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" formControlName="tituloPro" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             <br>
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que año/periodo de esete proyecto deseas agregar?</label>
-                            <input type="number"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <input type="number" formControlName="periodoPro" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                             <br>
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que tipo de descripcion de este proyecto deseas agregar?</label>
-                            <input type="number"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <input type="number" formControlName="tipoPro" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <br>
+                            <label for="exampleInputEmail1" class="form-typo form-label">¿Que descripcion de este proyecto deseas agregar?</label>
+                            <input type="number" formControlName="descripcionPro" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                         </div>
                     </form>
                 ...
