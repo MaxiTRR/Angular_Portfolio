@@ -1,3 +1,12 @@
+export class User{
+    id:number = 0;
+    nombre:string = '';
+    apellido:string ='';
+    dni:number = 0;
+    fechaNac:string = '';
+    //direccion:object = Direccion;
+}
+
 export class Contacto{
     id:number = 0;
     email:string = '';
@@ -45,6 +54,7 @@ export class Exp{
 
 export class InfoPersoanl{
     id:number = 0;
+    nombreInfo:string = '';
     titulo:string ='';
     descripcion:string='';
     //imgProfile:string ='';
@@ -53,6 +63,7 @@ export class InfoPersoanl{
 export class Proyectos{
     id:number = 0;
     tituloPro:string = '';
+    tipoPro:string ='';
     periodoPro:string = '';
     descripcionPro:string = '';
     //imgProject:string ='';

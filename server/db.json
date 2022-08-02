@@ -29,6 +29,7 @@
   "infoPersonal": [
     {
       "id": 1,
+      "nombreInfo": "Torres, Maximiliano",
       "titulo": "Full Stack developer jr",
       "descripcion": "Hola! Mi nombre es Maximiliano, en el ultimo año comence mi viaje en el maravilloso mundo de la programacion y desde ese momento nunca me detuve en mi formacion de esta emocionante carrera. ¿Queres saber como empece, donde me encuentro y cual va a ser mi proximo destino en esta travesia? Dale click y averiguemoslo juntos!",
       "imgProfile": "URL_de_la_imagen"
