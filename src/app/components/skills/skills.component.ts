@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Skill } from '../../interfaces/Skill'
-
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ApiService } from 'src/app/services/api.service';

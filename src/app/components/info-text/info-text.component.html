@@ -1,8 +1,10 @@
 <section>
-    <p id="name">Maximiliano Torres</p>
-    <p id="profesion">Programador y Desarrollador web</p>
-    <p id="nivel">Full Stack Developer Jr.</p>
-    <p class="pt-5"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta consequatur aperiam, assumenda velit a molestiae porro exercitationem magnam facere fugiat deserunt quod facilis non et quia officia saepe ratione provident.</p>
+    <div *ngFor="let row of infoTextData">
+        <p id="name">{{row.nombreInfo}}</p>
+        <p id="profesion">{{row.titulo}}</p>
+        <p class="pt-5">{{row.descripcion}}</p>
+    </div>
+    
     
     <!-- Boton para editar la Informacion-->
     <div class="pencil-info container-fluid">
@@ -59,51 +61,16 @@
                     ...
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <button type="button" id="cancelInfo" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancelar
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" 
+                            class="btn btn-primary"
+                            (click)="postInfoPersonalDetails()"
+                            >
                             Actualizar
                         </button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-    
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="form-typo modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Info Personal
-                    </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulario-->
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-typo form-label">¿Que Skill deseas agregar?</label>
-                            <input type="text" formControlName = "nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <br>
-                            <label for="exampleInputEmail1" class="form-typo form-label">¿En que nivel de esta Skill consideras que te encontras?</label>
-                            <input type="number" formControlName = "nivel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
-                        </div>
-                    </form>
-                ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        Actualizar
-                    </button>
                 </div>
             </div>
         </div>
