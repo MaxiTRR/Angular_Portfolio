@@ -3,41 +3,47 @@
     <div  class="container-fluid">
         <div class="text-center">
             <h2 id="edu-title" class="h2">Educacion</h2>
-        
-            <div [ngClass]="data === false? 'edu-card-dark': 'edu-card-light'"
-                class="card mx-auto"
-                style="width: 18rem;"
-                id="edu-card"
-                >
-                <img class="card-img-top mx-auto" id="udemy" src="../../../assets/Udemy Logo.png">
-                <div [ngClass]="data === false? 'edu-card-dark': 'edu-card-light'">
-                    <h5 class="card-title">Udemy</h5>
-                    <p class="card-text">Año: 2021</p>
-                    <p class="card-text">Aprende CSS completo 2021 (7.5 hs)</p>
-                    <p class="card-text">Instructor Manuel Gomez Martinez</p>
-
-
-                    <!-- Boton para editar el contenido-->
-                    <button
-                        [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'" 
-                        id="edit" 
-                        type="button" 
-                        class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    >
-                        <fa-icon [icon]="faPencil"></fa-icon>
-                    </button>
-
-                    <!-- Boton para eliminar el contenido-->
-                    <button 
-                        [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
-                        id="delete" 
-                        type="button"
-                        class="btn"
+            <div class="row d-flex justify-content-center" >
+                <div class="col-lg-4" *ngFor="let row of eduData" >
+                    <div [ngClass]="data === false? 'edu-card-dark': 'edu-card-light'"
+                        class="card mx-auto"
+                        style="width: 18rem;"
+                        id="edu-card"
+                        
                         >
-                        <fa-icon [icon]="faXmark"></fa-icon>
-                    </button>
+                        <img class="card-img-top mx-auto" id="udemy" src="../../../assets/Udemy Logo.png">
+                        <div [ngClass]="data === false? 'edu-card-dark': 'edu-card-light'">
+                            <h5 class="card-title">{{row.nombreInst}}</h5>
+                            <p class="card-text">{{row.periodoEdu}}</p>
+                            <p class="card-text">{{row.tituloEdu}}</p>
+                            <p class="card-text">{{row.descripcionEdu}}</p>
+
+
+                            <!-- Boton para editar el contenido-->
+                            <button
+                                [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'" 
+                                id="edit" 
+                                type="button" 
+                                class="btn" data-bs-toggle="modal"
+                            >
+                                <fa-icon [icon]="faPencil"></fa-icon>
+                            </button>
+
+                            <!-- Boton para eliminar el contenido-->
+                            <button 
+                                [ngClass]="data === false? 'btn-icon-dark': 'btn-icon-light'"
+                                id="delete" 
+                                type="button"
+                                class="btn"
+                                >
+                                <fa-icon [icon]="faXmark"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+        
+            
 
              <!--Boton para agregar estudio-->
             <button 
@@ -70,22 +76,25 @@
                                 <input type="text" formControlName="nombreInst"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <br>
                                 <label for="exampleInputEmail1" class="form-typo form-label">¿Que año/periodo de educacion deseas agregar?</label>
-                                <input type="number" formControlName="periodoEdu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                                <input type="text" formControlName="periodoEdu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                                 <br>
                                 <label for="exampleInputEmail1" class="form-typo form-label">¿Que titulo de educacion deseas agregar?</label>
-                                <input type="number" formControlName="tituloEdu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                                <input type="text" formControlName="tituloEdu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                                 <br>
                                 <label for="exampleInputEmail1" class="form-typo form-label">¿Que descripcion de educacion deseas agregar?</label>
-                                <input type="number" formControlName="descripcionEdu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                                <input type="text" formControlName="descripcionEdu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                             </div>
                         </form>
                     ...
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <button type="button" id="cancelEdu" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancelar
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button 
+                            type="button" class="btn btn-primary"
+                            (click)="postEduDetails()"
+                            >
                             Actualizar
                         </button>
                     </div>

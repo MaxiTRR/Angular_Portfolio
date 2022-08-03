@@ -3,7 +3,10 @@
     
     <h2 id="exp-title" class="h2 text-center">Experiencia</h2>
     
-    <div id="exp" class="container-fluid">
+    <div 
+        id="exp" class="container-fluid"
+        *ngFor="let row of expData"
+        >
         <div class="row">
             <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="exp-img">
@@ -13,15 +16,12 @@
 
             <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="">
-                    <p class="exp-title-enterprise">Amazon</p>
+                    <p class="exp-title-enterprise">{{row.lugar}}</p>
                     <br>
-                    <p>Perido: Enero 2022 - Julio 2022</p>
-                    <p>Desarrollador Front End</p>
+                    <p>{{row.periodo}}</p>
+                    <p>{{row.area}}</p>
+                    <p>{{row.rol}}</p>
                 </div>
-            </div>
-
-            <div class="col-sm-6">
-                
             </div>
         </div>
     </div>
@@ -44,22 +44,25 @@
                             <input type="text" formControlName="lugar" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             <br>
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que año/periodo de experiencia deseas agregar?</label>
-                            <input type="number" formControlName="periodo"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <input type="text" formControlName="periodo"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                             <br>
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que area de experiencia deseas agregar?</label>
-                            <input type="number" formControlName="area" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <input type="text" formControlName="area" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                             <br>
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que rol de experiencia deseas agregar?</label>
-                            <input type="number" formControlName="rol" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <input type="text" formControlName="rol" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
                         </div>
                     </form>
                 ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button type="button" id="cancelExp" class="btn btn-secondary" data-bs-dismiss="modal">
                         Cancelar
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button 
+                        type="button" class="btn btn-primary"
+                        (click)="postExpDetails()"                   
+                    >
                         Actualizar
                     </button>
                 </div>

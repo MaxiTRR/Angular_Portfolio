@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Exp } from 'src/app/models/models.model';
 
 import { ChangeStyleService } from 'src/app/services/change-style.service';
+import { ExperienceService } from 'src/app/services/experience.service';
 
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +25,7 @@ export class ExperienceComponent implements OnInit {
 
   data:boolean = false;
 
-  constructor( private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder) { }
+  constructor( private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private api:ExperienceService) { }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -34,8 +35,41 @@ export class ExperienceComponent implements OnInit {
       rol: ['']
     });
 
+    this.getAllExperience();
+
     //Metodo para el cambio de Dark-Light theme
     this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
+
+  postExpDetails(){
+    this.expModelObj.lugar = this.formValue.value.lugar;
+    this.expModelObj.periodo = this.formValue.value.periodo;
+    this.expModelObj.area = this.formValue.value.area;
+    this.expModelObj.rol = this.formValue.value.rol;
+
+    this.api.postExperience(this.expModelObj)
+    .subscribe({
+      next: (res)=>{
+        console.log(res);
+        alert("Experiencia agregada correctamente!");
+        let ref = document.getElementById("cancelExp")
+        ref?.click();
+        this.formValue.reset();
+        this.getAllExperience();
+      },
+        error: (err)=>{
+          alert("Algo salio mal!");
+        }
+    })
+  }
+
+  getAllExperience(){
+    this.api.getExperience()
+    .subscribe({
+      next: (res)=>{
+        this.expData = res;
+      }
+    })
+  };
 
 }
