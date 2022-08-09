@@ -15,6 +15,17 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { RouterModule } from '@angular/router';
+
+import { Routes } from '@angular/router';
+
+const AppRoute:Routes =[
+  {path: 'portfolio', component:PortfolioComponent},
+  {path: 'login', component:LoginComponent},
+  {path: '', redirectTo:'login', pathMatch:'full'}
+]
+
 
 
 @NgModule({
@@ -29,13 +40,15 @@ import { LoginComponent } from './components/login/login.component';
     SkillsComponent,
     ProjectsComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(AppRoute)
   ],
   providers: [],
   bootstrap: [AppComponent]
