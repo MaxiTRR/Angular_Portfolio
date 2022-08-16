@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { RouterModule } from '@angular/router';
 
 import { Routes } from '@angular/router';
+import { InterceptorService } from './services/interceptor.service';
 
 const AppRoute:Routes =[
   {path: 'portfolio', component:PortfolioComponent},
@@ -50,7 +51,9 @@ const AppRoute:Routes =[
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoute)
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

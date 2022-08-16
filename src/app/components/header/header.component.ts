@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   @Output() darkMode = new EventEmitter<boolean>();
   data = false;
 
-  constructor(private changeStyleService:ChangeStyleService) { }
+  constructor(private changeStyleService:ChangeStyleService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,10 @@ export class HeaderComponent implements OnInit {
   sendClickEvent(){
     this.data = !this.data;
     this.changeStyleService.changeData(this.data);
+  }
+
+  login(){
+    this.router.navigate(['/login']);
   }
 
 }

@@ -58,6 +58,7 @@ export class InfoPersonal{
     titulo:string ='';
     descripcion:string='';
     //imgProfile:string ='';
+
 }
 
 export class Proyectos{

@@ -7,7 +7,7 @@
 
             <h3 class="mb-5">Sign in</h3>
 
-            <form [formGroup]="formValue" action="">
+            <form [formGroup]="formValue" (ngSubmit)="onEnviar($event)">
               <div class="form-outline mb-4">
                 <input type="email" formControlName="email" id="typeEmailX-2" class="form-control form-control-lg" />
                 <label class="form-label" for="typeEmailX-2">Email</label>
@@ -34,9 +34,11 @@
                   </p>
                 </div>
               </div>
+
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </form>
               
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            
 
             <hr class="my-4">
 

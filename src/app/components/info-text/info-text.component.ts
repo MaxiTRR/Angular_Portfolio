@@ -27,7 +27,7 @@ export class InfoTextComponent implements OnInit {
 
   data:boolean = false;
 
-  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private api:InfoTextService) { }
+  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, public api:InfoTextService) { }
 
   public ngOnInit():void{
     this.formValue = this.formBuilder.group({
@@ -37,6 +37,14 @@ export class InfoTextComponent implements OnInit {
     })
     
     this.getAllInfoPersonal();
+
+
+    //----------------------------------------------------------    
+    //Metodo de prueba para la conexion con el backend (FUNCIONA-ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
+    this.api.getInfoPersonalV2().subscribe(data => this.infoTextModelObj = data);
+    //------------------------------------------------------------------
+
+
     
     //Metodo para el cambio de Dark-Light theme
     this.changeStyleService.currentData.subscribe( data => this.data = data);
