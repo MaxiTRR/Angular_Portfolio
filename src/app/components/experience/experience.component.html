@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="exp-img">
-                    <img class="img-fluid mt-5 mb-5" id="amazon" src="../../../assets/amazon.png" alt="amazon">
+                    <img class="img-fluid mt-5 mb-5" id="amazon" [src]="row.logo" alt="amazon">
                 </div>
             </div>
 
@@ -51,6 +51,9 @@
                             <br>
                             <label for="exampleInputEmail1" class="form-typo form-label">¿Que rol de experiencia deseas agregar?</label>
                             <input type="text" formControlName="rol" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="100">
+                            <br>
+                            <label for="exampleInputEmail1" class="form-typo form-label">¿Que logo de experiencia deseas agregar?</label>
+                            <input type="text" formControlName="logo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="1" max="200">
                         </div>
                     </form>
                 ...

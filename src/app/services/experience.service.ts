@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Exp } from '../models/models.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExperienceService {
+
+  //Variable para la prueba de obtencion de datos del Backend JAVA
+  url = "http://localhost:8080/experience/";
 
   constructor(private http:HttpClient) { }
 
@@ -22,6 +27,19 @@ export class ExperienceService {
       return res;
     }))
   }
+
+
+
+
+
+   //Metodo de prueba de GET datos desde el backend con Observable
+   public getExperienceV2():Observable<Exp>{
+    return this.http.get<Exp>(this.url + 'traer');
+  }
+
+
+
+
 
   updateExperience(data:any, id:number){
     return this.http.put<any>("http://localhost:3000/exp"+id, data)

@@ -32,10 +32,18 @@ export class ExperienceComponent implements OnInit {
       lugar: [''],
       periodo: [''],
       area: [''],
-      rol: ['']
+      rol: [''],
+      logo: ['']
     });
 
     this.getAllExperience();
+
+
+    //----------------------------------------------------------    
+    //Metodo de prueba para la conexion con el backend (FUNCIONA - ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
+    this.api.getExperienceV2().subscribe(data => this.expModelObj = data);
+    //------------------------------------------------------------------
+
 
     //Metodo para el cambio de Dark-Light theme
     this.changeStyleService.currentData.subscribe( data => this.data = data);
@@ -64,7 +72,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   getAllExperience(){
-    this.api.getExperience()
+    this.api.getExperienceV2()
     .subscribe({
       next: (res)=>{
         this.expData = res;
