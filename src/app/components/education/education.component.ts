@@ -32,10 +32,20 @@ export class EducationComponent implements OnInit {
       nombreInst: [''],
       periodoEdu: [''],
       tituloEdu: [''],
-      descripcionEdu: ['']
+      descripcionEdu: [''],
+      logoEdu: ['']
     });
 
     this.getAllEdu();
+
+
+     //----------------------------------------------------------    
+    //Metodo de prueba para la conexion con el backend (-ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
+    this.api.getEducationV2().subscribe(data => this.eduModelObj = data);
+    //------------------------------------------------------------------
+
+
+
 
 
     //Metodo para el cambio de Dark-Light theme
@@ -65,7 +75,7 @@ export class EducationComponent implements OnInit {
   }
 
   getAllEdu(){
-    this.api.getEducation()
+    this.api.getEducationV2()
     .subscribe({
       next: (res)=>{
         this.eduData = res;
