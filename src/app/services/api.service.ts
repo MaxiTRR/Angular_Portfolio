@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { SkillModel } from '../components/skills/skills.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  //Variable para la prueba de obtencion de datos del Backend JAVA
+  url = "http://localhost:8080/skill/";
+
+
+
 
   // ESTE SERVICE ES EL ESPECIFICO PARA SKILLS!!!! (CAMBIAR NOMBRE)
 
@@ -24,6 +32,15 @@ export class ApiService {
       return res;
     }))
   }
+
+
+   //Metodo de prueba de GET datos desde el backend con Observable
+   public getSkillV2():Observable<SkillModel>{
+    return this.http.get<SkillModel>(this.url + 'traer');
+  }
+
+
+
 
   updateSkill(data:any, id:number){
     return this.http.put<any>("http://localhost:3000/skills"+id, data)

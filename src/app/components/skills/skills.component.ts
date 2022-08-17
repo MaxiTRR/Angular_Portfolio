@@ -34,6 +34,13 @@ export class SkillsComponent implements OnInit {
 
     this.getAllSkill();
 
+
+    //----------------------------------------------------------    
+    //Metodo de prueba para la conexion con el backend (-ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
+    this.api.getSkillV2().subscribe(data => this.skillModelObj = data);
+    //------------------------------------------------------------------
+
+
     //Metodo para el cambio de Dark-Light theme
     this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
@@ -60,7 +67,7 @@ export class SkillsComponent implements OnInit {
   }
 
   getAllSkill(){
-    this.api.getSkill()
+    this.api.getSkillV2()
     .subscribe({next: (res)=>{
       this.skillData = res;
       }
