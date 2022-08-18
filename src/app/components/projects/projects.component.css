@@ -21,6 +21,11 @@
     border-radius: 15px;
 }
 
+#project-img{
+    width: 22.688rem;
+    height: 6.484rem;
+}
+
 /*BOTONES*/
 
 #edit #delete{

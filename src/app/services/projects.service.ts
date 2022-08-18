@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Proyectos } from '../models/models.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
+
+  //Variable para la prueba de obtencion de datos del Backend JAVA
+  url = "http://localhost:8080/project/";
+
 
   constructor(private http:HttpClient) { }
 
@@ -22,6 +28,15 @@ export class ProjectsService {
       return res;
     }))
   }
+
+
+  //Metodo de prueba de GET datos desde el backend con Observable
+  public getProjectV2():Observable<Proyectos>{
+    return this.http.get<Proyectos>(this.url + 'traer');
+  }
+
+
+
 
   updateProject(data:any, id:number){
     return this.http.put<any>("http://localhost:3000/proyectos"+id, data)

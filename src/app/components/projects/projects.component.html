@@ -6,6 +6,7 @@
              class="container pb-5"
              *ngFor="let row of proData"
             >
+            <img class="img-fluid mt-5 mb-5" id="project-img" [src]="row.imgPoject" alt="">
             <h3 class="pt-5">{{row.tituloPro}}</h3>
             <p>{{row.periodoPro}}</p>
             <p>{{row.tipoPro}}</p>

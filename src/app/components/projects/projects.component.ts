@@ -36,6 +36,15 @@ export class ProjectsComponent implements OnInit {
     });
 
     this.getAllProjects()
+
+
+    //----------------------------------------------------------    
+    //Metodo de prueba para la conexion con el backend (ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
+    this.api.getProjectV2().subscribe(data => this.proModelObj = data);
+    //------------------------------------------------------------------
+
+
+
     
     
     //Metodo para el cambio de Dark-Light theme
@@ -65,7 +74,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getAllProjects(){
-    this.api.getProject()
+    this.api.getProjectV2()
     .subscribe({
       next: (res)=>{
         this.proData = res;
