@@ -7,39 +7,20 @@
 
             <h3 class="mb-5">Sign in</h3>
 
-            <form [formGroup]="formValue" (ngSubmit)="onEnviar($event)">
+            <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
               <div class="form-outline mb-4">
-                <input type="email" formControlName="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX-2">Email</label>
-                <div *ngIf="email?.errors && email?.touched">
-                  <p *ngIf="email?.hasError('required')" class="text-danger">
-                    El email es requerido
-                  </p>
-                  <p *ngIf="email?.hasError('email')" class="text-danger">
-                    El formato del email debe ser valido
-                  </p>
-
-                </div>
+                <input type="email" id="nombreUsuario"  class="form-control form-control-lg" [(ngModel)]="nombreUsuario" name="nombreUsuario" required />
+                <label class="form-label" for="nombreUsuario">Usuario</label>
               </div>
   
               <div class="form-outline mb-4">
-                <input type="password" formControlName="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Contraseña</label>
-                <div *ngIf="password?.errors && password?.touched">
-                  <p *ngIf="password?.hasError('required')" class="text-danger">
-                    El password es requerido
-                  </p>
-                  <p *ngIf="password?.hasError('password')" class="text-danger">
-                    El formato del password debe ser valido
-                  </p>
-                </div>
+                <input type="password" id="password" class="form-control form-control-lg" [(ngModel)]="password" name="password" required />
+                <label class="form-label" for="password">Password</label>
               </div>
 
               <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </form>
               
-            
-
             <hr class="my-4">
 
           </div>

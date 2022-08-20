@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -19,12 +19,12 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { RouterModule } from '@angular/router';
 
 import { Routes } from '@angular/router';
-import { InterceptorService } from './services/interceptor.service';
+
 
 const AppRoute:Routes =[
   {path: 'portfolio', component:PortfolioComponent},
-  {path: 'login', component:LoginComponent},
-  {path: '', redirectTo:'login', pathMatch:'full'}
+  {path: 'login', component:LoginComponent}
+
 ]
 
 
@@ -49,10 +49,10 @@ const AppRoute:Routes =[
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRoute)
+    RouterModule.forRoot(AppRoute),
+    FormsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}
   ],
   bootstrap: [AppComponent]
 })

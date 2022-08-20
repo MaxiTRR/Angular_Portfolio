@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ChangeStyleService } from 'src/app/services/change-style.service';
 
@@ -11,7 +12,7 @@ export class PortfolioComponent implements OnInit {
 
   data:boolean = false;
 
-  constructor( private changeStyleService:ChangeStyleService) { }
+  constructor( private changeStyleService:ChangeStyleService, private router:Router) { }
 
   ngOnInit(): void {
     
