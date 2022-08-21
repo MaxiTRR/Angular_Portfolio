@@ -6,6 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram} from '@fortawesome/free-brands-svg-icons';
 
 import { ChangeStyleService } from 'src/app/services/change-style.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -19,11 +20,21 @@ export class HeaderComponent implements OnInit {
   faInstagram = faInstagram;
 
   @Output() darkMode = new EventEmitter<boolean>();
+  
+  //Variable para el cambio de Dark-Light theme
   data = false;
 
-  constructor(private changeStyleService:ChangeStyleService, private router:Router) { }
+  isLogged = false;
+
+  constructor(private changeStyleService:ChangeStyleService, private router:Router, private tokenService:TokenService) { }
 
   ngOnInit(): void {
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+    }
+    
   }
 
   sendClickEvent(){
@@ -33,6 +44,11 @@ export class HeaderComponent implements OnInit {
 
   login(){
     this.router.navigate(['/login']);
+  }
+
+  onLogout():void{
+    this.tokenService.logOut();
+    window.location.reload();
   }
 
 }

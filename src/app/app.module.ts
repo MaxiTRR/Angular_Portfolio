@@ -19,6 +19,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { RouterModule } from '@angular/router';
 
 import { Routes } from '@angular/router';
+import { interceptorProvider } from './services/interceptor-service';
 
 
 const AppRoute:Routes =[
@@ -53,6 +54,7 @@ const AppRoute:Routes =[
     FormsModule
   ],
   providers: [
+    interceptorProvider
   ],
   bootstrap: [AppComponent]
 })
