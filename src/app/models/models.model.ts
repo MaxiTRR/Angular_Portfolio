@@ -44,12 +44,20 @@ export class Educacion{
 }
 
 export class Exp{
-    id:number = 0;
-    lugar:string = '';
-    periodo:string = '';
-    area:string = '';
-    rol:string = '';
-    //logo:string = '';
+    id?:number;
+    lugar:string;
+    periodo:string;
+    area:string;
+    rol:string ;
+    logo:string;
+
+    constructor(lugar:string, periodo:string, area:string, rol:string, logo:string){
+        this.lugar = lugar;
+        this.periodo = periodo;
+        this.area = area;
+        this.rol = rol;
+        this.logo = logo;
+    }
 }
 
 export class InfoPersonal{
