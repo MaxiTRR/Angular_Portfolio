@@ -9,6 +9,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-experience',
@@ -19,65 +20,53 @@ export class ExperienceComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
 
-  formValue!:FormGroup;
-  expModelObj:Exp = new Exp();
-  expData:any;
+  experiencia:Exp[] = [];
 
-  data:boolean = false;
+  lugar:string = '';
+  periodo:string = '';
+  area:string = '';
+  rol:string = '';
+  logo:string = '';
 
-  constructor( private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private api:ExperienceService) { }
+
+  //Variable para el cambio de Dark-Light theme
+  dataTheme:boolean = false;
+
+  isLogged = false;
+
+  constructor( private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private experienceService:ExperienceService, private tokenService:TokenService) { }
 
   ngOnInit(): void {
-    this.formValue = this.formBuilder.group({
-      lugar: [''],
-      periodo: [''],
-      area: [''],
-      rol: [''],
-      logo: ['']
-    });
-
-    this.getAllExperience();
-
-
-    //----------------------------------------------------------    
-    //Metodo de prueba para la conexion con el backend (FUNCIONA - ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
-    this.api.getExperienceV2().subscribe(data => this.expModelObj = data);
-    //------------------------------------------------------------------
-
-
     //Metodo para el cambio de Dark-Light theme
-    this.changeStyleService.currentData.subscribe( data => this.data = data);
+    this.changeStyleService.currentData.subscribe( dataTheme => this.dataTheme = dataTheme);
+
+    this.cargarExperience();
+    
+    //Validacion para saber si estamos logueados
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+    }
+
   }
 
-  postExpDetails(){
-    this.expModelObj.lugar = this.formValue.value.lugar;
-    this.expModelObj.periodo = this.formValue.value.periodo;
-    this.expModelObj.area = this.formValue.value.area;
-    this.expModelObj.rol = this.formValue.value.rol;
-
-    this.api.postExperience(this.expModelObj)
-    .subscribe({
-      next: (res)=>{
-        console.log(res);
-        alert("Experiencia agregada correctamente!");
-        let ref = document.getElementById("cancelExp")
-        ref?.click();
-        this.formValue.reset();
-        this.getAllExperience();
-      },
-        error: (err)=>{
-          alert("Algo salio mal!");
-        }
-    })
-  }
-
-  getAllExperience(){
-    this.api.getExperienceV2()
-    .subscribe({
-      next: (res)=>{
-        this.expData = res;
+  cargarExperience():void{
+    this.experienceService.lista().subscribe(
+      data =>{
+        this.experiencia = data;
       }
-    })
-  };
+    )
+  }
 
+  onCreate():void{
+    const expe = new Exp(this.lugar, this.periodo, this.area, this.rol, this.logo);
+    this.experienceService.save(expe).subscribe(
+      data =>{
+        alert("Experience añadida");
+      }, err =>{
+        alert("Algo salio mal");
+      }
+    );
+  }
 }
