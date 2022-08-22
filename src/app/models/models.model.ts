@@ -44,7 +44,7 @@ export class Educacion{
 }
 
 export class Exp{
-    id?:number;
+    id!:number;
     lugar:string;
     periodo:string;
     area:string;
@@ -61,7 +61,7 @@ export class Exp{
 }
 
 export class InfoPersonal{
-    id:number = 0;
+    id?:number = 0;
     nombreInfo:string = '';
     titulo:string ='';
     descripcion:string='';

@@ -22,6 +22,9 @@ export class ExperienceComponent implements OnInit {
 
   experiencia:Exp[] = [];
 
+  expToUpdate!:Exp;
+  
+
   lugar:string = '';
   periodo:string = '';
   area:string = '';
@@ -68,5 +71,31 @@ export class ExperienceComponent implements OnInit {
         alert("Algo salio mal");
       }
     );
+  }
+
+  findExperience(id:any){
+    this.experienceService.detail(id).subscribe(
+      data =>{
+        this.expToUpdate = data;
+        console.log(id);
+      }
+    );
+  }
+
+  onUpdate(id:any):void{
+    this.experienceService.update(id, this.expToUpdate).subscribe(
+      data =>{
+        this.cargarExperience();
+        
+      }
+    );
+  }
+
+  deleteExperience(id:any){
+    this.experienceService.delete(id).subscribe(
+      data =>{
+        this.cargarExperience();
+      }
+    )
   }
 }
