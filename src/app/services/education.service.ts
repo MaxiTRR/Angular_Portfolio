@@ -29,10 +29,33 @@ export class EducationService {
   }
 
 
+  //---------------------------------------------------------------------------
   //Metodo de prueba de GET datos desde el backend con Observable
-  public getEducationV2():Observable<Educacion>{
-    return this.http.get<Educacion>(this.url + 'traer');
+  //public getExperienceV2():Observable<Exp>{
+  //return this.http.get<Exp>(this.url + 'traer');
+  //}
+
+  public lista(): Observable<Educacion[]>{
+    return this.http.get<Educacion[]>(this.url + 'lista');
   }
+
+  public detail(id:number): Observable<Educacion>{
+    return this.http.get<Educacion>(this.url + `detail/${id}`);
+  }
+
+  public save(education:Educacion):Observable<any>{
+    return this.http.post<any>(this.url + 'create', education);
+  }
+
+  public update(id:number, education:Educacion):Observable<any>{
+    return this.http.put<any>(this.url + `update/${id}`, education);
+  }
+
+  public delete(id:number):Observable<any>{
+    return this.http.delete<any>(this.url + `delete/${id}`);
+  }
+
+  //--------------------------------------------------------------------------------
 
 
 

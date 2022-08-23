@@ -9,6 +9,7 @@ import { faXmark} from '@fortawesome/free-solid-svg-icons';
 
 import { ChangeStyleService } from 'src/app/services/change-style.service';
 import { EducationService } from 'src/app/services/education.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-education',
@@ -19,68 +20,77 @@ export class EducationComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
 
-  formValue!:FormGroup;
-  eduModelObj:Educacion = new Educacion();
-  eduData!:any;
+  education:Educacion[] = [];
+  eduToUpdate!:Educacion;
 
-  data:boolean = false;
+  nombreInst:string ='';
+  periodoEdu:string ='';
+  tituloEdu:string ='';
+  descripcionEdu:string ='';
+  logoEdu:string = '';
+
+  isLogged = false;
+
+  //Variable para el cambio de Dark-Light theme
+  dataTheme:boolean = false;
   
-  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private api:EducationService) { }
+  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private educationService:EducationService, private tokenService:TokenService) { }
 
   public ngOnInit():void{
-    this.formValue = this.formBuilder.group({
-      nombreInst: [''],
-      periodoEdu: [''],
-      tituloEdu: [''],
-      descripcionEdu: [''],
-      logoEdu: ['']
-    });
-
-    this.getAllEdu();
-
-
-     //----------------------------------------------------------    
-    //Metodo de prueba para la conexion con el backend (-ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
-    this.api.getEducationV2().subscribe(data => this.eduModelObj = data);
-    //------------------------------------------------------------------
-
-
-
-
-
     //Metodo para el cambio de Dark-Light theme
-    this.changeStyleService.currentData.subscribe( data => this.data = data);
+    this.changeStyleService.currentData.subscribe( dataTheme => this.dataTheme = dataTheme);
+
+    this.cargarEducation();
+    
+    //Validacion para saber si estamos logueados
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+    }
   }
 
-  postEduDetails(){
-    this.eduModelObj.nombreInst = this.formValue.value.nombreInst;
-    this.eduModelObj.periodoEdu = this.formValue.value.periodoEdu;
-    this.eduModelObj.tituloEdu = this.formValue.value.tituloEdu;
-    this.eduModelObj.descripcionEdu = this.formValue.value.descripcionEdu;
-
-    this.api.postEducation(this.eduModelObj)
-    .subscribe({
-      next: (res)=>{
-        console.log(res);
-        alert("Educacion agregada exitosamente!");
-        let ref = document.getElementById("cancelEdu")
-        ref?.click();
-        this.formValue.reset();
-        this.getAllEdu();
-      },
-        error: (err)=>{
-          alert("Algo salio mal!");
-        }
-    })
-  }
-
-  getAllEdu(){
-    this.api.getEducationV2()
-    .subscribe({
-      next: (res)=>{
-        this.eduData = res;
+  cargarEducation():void{
+    this.educationService.lista().subscribe(
+      data =>{
+        this.education = data;
       }
-    })
+    );
+  }
+
+  onCreate():void{
+    const edu = new Educacion(this.nombreInst, this.periodoEdu, this.tituloEdu, this.descripcionEdu, this.logoEdu);
+    this.educationService.save(edu).subscribe(
+      data =>{
+        alert("Education añadida");
+      }, err =>{
+        alert("Algo salio mal");
+      }
+    );
+  }
+
+  findEducation(id:any){
+    this.educationService.detail(id).subscribe(
+      data=>{
+        this.eduToUpdate = data;
+      }
+    );
+  }
+
+  onUpdate(id:any){
+    this.educationService.update(id, this.eduToUpdate).subscribe(
+      data=>{
+        this.cargarEducation();
+      }
+    );
+  }
+
+  deleteEducation(id:any){
+    this.educationService.delete(id).subscribe(
+      data=>{
+        this.cargarEducation();
+      }
+    );
   }
 
 }

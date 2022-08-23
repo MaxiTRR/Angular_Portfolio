@@ -34,13 +34,21 @@ export class Direccion{
 }
 
 export class Educacion{
-    id:number = 0;
-    nombreInst:string = '';
-    periodoEdu:string = '';
-    tituloEdu:string = '';
-    descripcionEdu:string = '';
+    id!:number;
+    nombreInst:string;
+    periodoEdu:string;
+    tituloEdu:string;
+    descripcionEdu:string;
     //certificado:string = '';
-    //logo:string = '';
+    logoEdu:string;
+
+    constructor(nombreInst:string, periodoEdu:string, tituloEdu:string, descripcionEdu:string, logoEdu:string){
+        this.nombreInst = nombreInst;
+        this.periodoEdu = periodoEdu;
+        this.tituloEdu = tituloEdu;
+        this.descripcionEdu = descripcionEdu;
+        this.logoEdu = logoEdu;
+    }
 }
 
 export class Exp{
