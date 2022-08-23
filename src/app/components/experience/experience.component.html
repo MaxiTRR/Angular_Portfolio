@@ -39,7 +39,8 @@
                 <button [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'" id="delete" type="button"
                     class="btn"
                     (click)="deleteExperience(row.id)"
-                    *ngIf="isLogged">
+                    *ngIf="isLogged"
+                    >
                     <fa-icon [icon]="faXmark"></fa-icon>
                 </button>
             </div>
@@ -140,7 +141,7 @@
                             <button type="button" id="cancelExp" class="btn btn-secondary" data-bs-dismiss="modal">
                                 Cancelar
                             </button>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
                                 Actualizar
                             </button>
                         </div>

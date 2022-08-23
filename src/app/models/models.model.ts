@@ -68,6 +68,17 @@ export class Exp{
     }
 }
 
+export class Skill{
+    id!:number;
+    nombre:string;
+    nivel:number;
+
+    constructor(nombre:string, nivel:number){
+        this.nombre = nombre;
+        this.nivel = nivel;
+    }
+}
+
 export class InfoPersonal{
     id?:number = 0;
     nombreInfo:string = '';
@@ -111,3 +122,4 @@ export class JwtDto{
     nombreUsuario!:string;
     authorities!:string[];
 }
+

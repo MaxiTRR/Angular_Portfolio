@@ -2,12 +2,14 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { ApiService } from 'src/app/services/api.service';
+
 import { ChangeStyleService } from 'src/app/services/change-style.service';
 
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
-import { SkillModel } from './skills.model';
+import { Skill } from 'src/app/models/models.model';
+import { SkillService } from 'src/app/services/skill.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-skills',
@@ -18,60 +20,75 @@ export class SkillsComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
 
-  formValue!:FormGroup;
-  skillModelObj:SkillModel = new SkillModel();
-  skillData!:any;
+  skill:Skill[] = [];
+  skillToUpdate!:Skill;
 
-  data:boolean = false;
+  nombre:string ='';
+  nivel:number=0;
 
-  constructor(private formBuilder:FormBuilder, private api:ApiService, private changeStyleService:ChangeStyleService) { }
+  //Variable para el cambio de Dark-Light theme
+  dataTheme:boolean = false;
+
+  isLogged = false;
+
+  constructor(private formBuilder:FormBuilder, private changeStyleService:ChangeStyleService, private skillService:SkillService, private tokenService:TokenService) { }
 
   ngOnInit(): void {
-    this.formValue = this.formBuilder.group({
-      nombre : [''],
-      nivel : []
-    })
-
-    this.getAllSkill();
-
-
-    //----------------------------------------------------------    
-    //Metodo de prueba para la conexion con el backend (-ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
-    this.api.getSkillV2().subscribe(data => this.skillModelObj = data);
-    //------------------------------------------------------------------
-
-
     //Metodo para el cambio de Dark-Light theme
-    this.changeStyleService.currentData.subscribe( data => this.data = data);
+    this.changeStyleService.currentData.subscribe( dataTheme => this.dataTheme = dataTheme);
+
+    this.cargarSkill();
+
+    //Validacion para saber si estamos logueados
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+    }
   }
 
+  cargarSkill():void{
+    this.skillService.lista().subscribe(
+      data =>{
+        this.skill = data;
+      }
+    )
+  }
+
+  onCreate():void{
+    const sk = new Skill(this.nombre, this.nivel);
+    this.skillService.save(sk).subscribe(
+      data =>{
+        alert("Skill añadida");
+      }, err =>{
+        alert("Algo salio mal");
+      }
+    );
+  }
+
+  findSkill(id:any){
+    this.skillService.detail(id).subscribe(
+      data =>{
+        this.skillToUpdate = data;
+        console.log(id);
+      }
+    );
+  }
+
+  onUpdate(id:any):void{
+    this.skillService.update(id, this.skillToUpdate).subscribe(
+      data =>{
+        this.cargarSkill();
+      }
+    );
+  }
  
-
-  postSkillDetails(){
-    this.skillModelObj.nombre = this.formValue.value.nombre;
-    this.skillModelObj.nivel = this.formValue.value.nivel;
-
-    this.api.postSkill(this.skillModelObj)
-    .subscribe({next: (res) =>{ 
-      console.log(res);
-      alert("Skill agregada exitosamente!");
-      let ref = document.getElementById("cancel")
-      ref?.click();
-      this.formValue.reset();
-      this.getAllSkill();
-    },
-      error: (err) =>{
-      alert("Algo salio mal!")
+  deleteSkill(id:any){
+    this.skillService.delete(id).subscribe(
+      data =>{
+        this.cargarSkill();
       }
-    })
-  }
-
-  getAllSkill(){
-    this.api.getSkillV2()
-    .subscribe({next: (res)=>{
-      this.skillData = res;
-      }
-    })
+    );
   }
 
 }
