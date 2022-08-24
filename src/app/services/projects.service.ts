@@ -30,10 +30,32 @@ export class ProjectsService {
   }
 
 
+  //---------------------------------------------------------------------------
   //Metodo de prueba de GET datos desde el backend con Observable
-  public getProjectV2():Observable<Proyectos>{
-    return this.http.get<Proyectos>(this.url + 'traer');
+  
+
+  public lista(): Observable<Proyectos[]>{
+    return this.http.get<Proyectos[]>(this.url + 'lista');
   }
+
+  public detail(id:number): Observable<Proyectos>{
+    return this.http.get<Proyectos>(this.url + `detail/${id}`);
+  }
+
+  public save(project:Proyectos):Observable<any>{
+    return this.http.post<any>(this.url + 'create', project);
+  }
+
+  public update(id:number, project:Proyectos):Observable<any>{
+    return this.http.put<any>(this.url + `update/${id}`, project);
+  }
+
+  public delete(id:number):Observable<any>{
+    return this.http.delete<any>(this.url + `delete/${id}`);
+  }
+
+  //--------------------------------------------------------------------------------
+
 
 
 

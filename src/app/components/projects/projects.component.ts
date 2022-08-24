@@ -9,6 +9,7 @@ import { ProjectsService } from 'src/app/services/projects.service';
 
 import { faPencil} from '@fortawesome/free-solid-svg-icons';
 import { faXmark} from '@fortawesome/free-solid-svg-icons';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-projects',
@@ -19,67 +20,80 @@ export class ProjectsComponent implements OnInit {
   faPencil=faPencil;
   faXmark=faXmark;
 
-  formValue!:FormGroup;
-  proModelObj:Proyectos = new Proyectos();
-  proData!:any;
-
-  data:boolean = false;
+  project:Proyectos[] = [];
+  proToUpdate!:Proyectos;
   
-  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private api:ProjectsService) { }
+  tituloPro:string='';
+  tipoPro:string='';
+  periodoPro:string='';
+  descripcionPro:string='';
+  imgProject:string='';
+
+  //Variable para el cambio de Dark-Light theme
+  dataTheme:boolean = false;
+
+  isLogged = false;
+  
+  constructor(private changeStyleService:ChangeStyleService, private formBuilder:FormBuilder, private projectService:ProjectsService, private tokenService:TokenService) { }
 
   public ngOnInit():void{
-    this.formValue = this.formBuilder.group({
-      tituloPro: [''],
-      tipoPro: [''],
-      periodoPro: [''],
-      descripcionPro: ['']
-    });
-
-    this.getAllProjects()
-
-
-    //----------------------------------------------------------    
-    //Metodo de prueba para la conexion con el backend (ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
-    this.api.getProjectV2().subscribe(data => this.proModelObj = data);
-    //------------------------------------------------------------------
-
-
-
-    
-    
     //Metodo para el cambio de Dark-Light theme
-    this.changeStyleService.currentData.subscribe( data => this.data = data);
+    this.changeStyleService.currentData.subscribe( dataTheme => this.dataTheme = dataTheme);
+
+    this.cargarProject();
+
+    //Validacion para saber si estamos logueados
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+    }
   }
 
-  postProjectDetails(){
-    this.proModelObj.tituloPro = this.formValue.value.tituloPro;
-    this.proModelObj.tipoPro = this.formValue.value.tipoPro;
-    this.proModelObj.periodoPro = this.formValue.value.periodoPro;
-    this.proModelObj.descripcionPro = this.formValue.value.descripcionPro;
-
-    this.api.postProject(this.proModelObj)
-    .subscribe({
-      next: (res)=>{
-        console.log(res);
-        alert("Proyecto agregado exitosamente!");
-        let ref = document.getElementById("cancelPro")
-        ref?.click();
-        this.formValue.reset();
-        this.getAllProjects();
-      },
-        error: (err)=>{
-          alert("Algo salio mal!");
-        }
-    })
-  }
-
-  getAllProjects(){
-    this.api.getProjectV2()
-    .subscribe({
-      next: (res)=>{
-        this.proData = res;
+  cargarProject():void{
+    this.projectService.lista().subscribe(
+      data =>{
+        this.project = data;
       }
-    })
+    )
   }
+
+  onCreate():void{
+    const pro = new Proyectos(this.tituloPro, this.tipoPro, this.periodoPro, this.descripcionPro, this.imgProject);
+    this.projectService.save(pro).subscribe(
+      data =>{
+        alert("Project añadida");
+      }, err =>{
+        alert("Algo salio mal");
+      }
+    );
+  }
+
+  findProject(id:any){
+    this.projectService.detail(id).subscribe(
+      data =>{
+        this.proToUpdate = data;
+        console.log(id);
+      }
+    );
+  }
+
+  onUpdate(id:any):void{
+    this.projectService.update(id, this.proToUpdate).subscribe(
+      data =>{
+        this.cargarProject();
+      }
+    );
+  }
+
+  deleteProject(id:any){
+    this.projectService.delete(id).subscribe(
+      data =>{
+        this.cargarProject();
+      }
+    )
+  }
+
+  
 
 }

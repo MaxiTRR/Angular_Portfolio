@@ -89,12 +89,20 @@ export class InfoPersonal{
 }
 
 export class Proyectos{
-    id:number = 0;
-    tituloPro:string = '';
-    tipoPro:string ='';
-    periodoPro:string = '';
-    descripcionPro:string = '';
-    //imgProject:string ='';
+    id!:number;
+    tituloPro:string;
+    tipoPro:string;
+    periodoPro:string;
+    descripcionPro:string;
+    imgProject:string;
+
+    constructor(tituloPro:string, tipoPro:string, periodoPro:string, descripcionPro:string, imgProject:string){
+        this.tituloPro = tituloPro;
+        this.tipoPro = tipoPro;
+        this.periodoPro = periodoPro;
+        this.descripcionPro = descripcionPro;
+        this.imgProject = imgProject;
+    }
 
 }
 
