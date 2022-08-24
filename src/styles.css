@@ -5,6 +5,94 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/*INFO PERSONAL*/
+.imagen{
+    display: flex;
+    justify-content: center;
+}
+
+.imagen-perfil{
+    background-image: url("../../../assets/Torres, Maximiliano.jpg");
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+     height: 31.25rem;
+     width: 31.25rem;
+     /* los siguientes valores son independientes del tamaño del círculo */
+     background-size: cover;
+     border-radius: 50%;
+     /*background-size: 100% auto;*/
+     border: #000 solid 5px; 
+}
+
+@media (max-width: 768px){
+    .imagen-perfil{
+        height: 15.625rem;
+        width: 15.625rem;
+    }
+}
+
+.info-container{
+    display: flex;
+    align-items: center;
+}
+
+.info-text{
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column nowrap;
+}
+
+#name{
+    font-size: 3.125rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#profesion{
+    font-size: 2rem;
+}
+
+
+/* CLASES PARA EL MODAL*/
+
+#edit1 #delete1{
+    background-color: transparent;
+    border: none;
+    /*color: #fff;
+    /*font-size: 2rem;*/
+    margin-right: 20px;
+}
+
+.btn-icon-dark{
+    color:#fff;
+    font-size: 2rem;
+}
+
+.btn-icon-light{
+    color:#000;
+    font-size: 2rem;
+}
+
+.btn-icon-darkAdd{
+    color:#000;
+}
+
+.btn-icon-lightAdd{
+    color:#fff;
+    background-color: #000;
+}
+
+.modal-title{
+    color: #000;
+}
+
+.btn-add-new{
+    font-size: 20px;
+    border-radius: 30px;
+    margin-top: 60px;
+    padding: 20px;
+}
+
 .social-icon{
     color: #fff;
     font-size: 3.125rem;
