@@ -31,10 +31,31 @@ export class InfoTextService {
 
 
 
+  //---------------------------------------------------------------------------
   //Metodo de prueba de GET datos desde el backend con Observable
-  public getInfoPersonalV2():Observable<InfoPersonal>{
-    return this.http.get<InfoPersonal>(this.url + 'traer/perfil');
+  
+
+  public lista(): Observable<InfoPersonal[]>{
+    return this.http.get<InfoPersonal[]>(this.url + 'lista');
   }
+
+  public detail(id:number): Observable<InfoPersonal>{
+    return this.http.get<InfoPersonal>(this.url + `detail/${id}`);
+  }
+
+  public save(infoPersonal:InfoPersonal):Observable<any>{
+    return this.http.post<any>(this.url + 'create', infoPersonal);
+  }
+
+  public update(id:number, infoPersonal:InfoPersonal):Observable<any>{
+    return this.http.put<any>(this.url + `update/${id}`, infoPersonal);
+  }
+
+  public delete(id:number):Observable<any>{
+    return this.http.delete<any>(this.url + `delete/${id}`);
+  }
+
+  //--------------------------------------------------------------------------------
 
 
 

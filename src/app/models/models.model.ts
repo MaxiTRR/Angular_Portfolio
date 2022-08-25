@@ -80,11 +80,22 @@ export class Skill{
 }
 
 export class InfoPersonal{
-    id?:number = 0;
-    nombreInfo:string = '';
-    titulo:string ='';
-    descripcion:string='';
-    //imgProfile:string ='';
+    id!:number;
+    nombreInfo:string;
+    titulo:string;
+    descripcion:string;
+    ciudad:string;
+    fechaNac:string;
+    imgProfile:string;
+
+    constructor(nombreInfo:string, titulo:string, descripcion:string, ciudad:string, fechaNac:string, imgProfile:string){
+        this.nombreInfo = nombreInfo;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.ciudad = ciudad;
+        this.fechaNac = fechaNac;
+        this.imgProfile = imgProfile;
+    }
 
 }
 

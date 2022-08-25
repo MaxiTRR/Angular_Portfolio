@@ -22,7 +22,7 @@ export class InfoTextComponent implements OnInit {
   faXmark=faXmark;
 
   formValue!: FormGroup;
-  infoTextModelObj:InfoPersonal = new InfoPersonal();
+  
   infoTextData!:any;
 
   data:boolean = false;
@@ -36,13 +36,10 @@ export class InfoTextComponent implements OnInit {
       descripcion: ['']
     })
     
-    this.getAllInfoPersonal();
+    
 
 
-    //----------------------------------------------------------    
-    //Metodo de prueba para la conexion con el backend (FUNCIONA-ACORDARSE DE ARREGLAR LO REFERIDO AL JSON SERVER)
-    this.api.getInfoPersonalV2().subscribe(data => this.infoTextModelObj = data);
-    //------------------------------------------------------------------
+    
 
 
     
@@ -50,34 +47,6 @@ export class InfoTextComponent implements OnInit {
     this.changeStyleService.currentData.subscribe( data => this.data = data);
   }
 
-  postInfoPersonalDetails(){
-    this.infoTextModelObj.nombreInfo = this.formValue.value.nombreInfo;
-    this.infoTextModelObj.titulo = this.formValue.value.titulo;
-    this.infoTextModelObj.descripcion = this.formValue.value.descripcion;
-
-    this.api.postInfoPersonal(this.infoTextModelObj)
-    .subscribe({
-      next: (res) =>{
-        console.log(res);
-        alert("Info Personal agregado exitosamente!");
-        let ref = document.getElementById("cancelInfo")
-        ref?.click();
-        this.formValue.reset();
-        this.getAllInfoPersonal();
-      },
-        error: (err) =>{
-          alert("Algo salio mal!")
-        }
-    })
-  }
-
-  getAllInfoPersonal(){
-    this.api.getInfoPersonal()
-    .subscribe({
-      next: (res)=>{
-        this.infoTextData = res;
-      }
-    })
-  }
+ 
 
 }

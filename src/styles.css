@@ -12,7 +12,7 @@
 }
 
 .imagen-perfil{
-    background-image: url("../../../assets/Torres, Maximiliano.jpg");
+    /*background-image: url("../../../assets/Torres, Maximiliano.jpg");*/
     /* cambia estos dos valores para definir el tamaño de tu círculo */
      height: 31.25rem;
      width: 31.25rem;
