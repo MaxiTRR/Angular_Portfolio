@@ -4,6 +4,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram} from '@fortawesome/free-brands-svg-icons';
+import { faLightbulb} from '@fortawesome/free-solid-svg-icons';
 
 import { ChangeStyleService } from 'src/app/services/change-style.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
   faLinkedin = faLinkedin;
   faGithub = faGithub;
   faInstagram = faInstagram;
+  faLightbulb = faLightbulb;
 
   @Output() darkMode = new EventEmitter<boolean>();
   

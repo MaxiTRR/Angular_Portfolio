@@ -3,14 +3,14 @@
         <h2 id="project-title" class="h2">Proyectos</h2>
         
         <div [ngClass]="dataTheme === false? 'project-card-dark': 'project-card-light'"
-             class="container pb-5"
+             class="container pb-5 mt-5"
              *ngFor="let row of project"
             >
             <img class="img-fluid mt-5 mb-5" id="project-img" [src]="row.imgProject" alt="">
-            <h3 class="pt-5">{{row.tituloPro}}</h3>
-            <p>{{row.periodoPro}}</p>
-            <p>{{row.tipoPro}}</p>
-            <p>{{row.descripcionPro}}</p>
+            <h3 id="project-title-page" class="pt-5">{{row.tituloPro}}</h3>
+            <p class="project-info mt-5">{{row.periodoPro}}</p>
+            <p class="project-info mt-1">{{row.tipoPro}}</p>
+            <p class="project-info mt-1">{{row.descripcionPro}}</p>
             
             <button
                 [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'" 

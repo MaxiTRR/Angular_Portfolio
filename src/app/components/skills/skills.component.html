@@ -4,10 +4,10 @@
             <h2 id="skills-title" class="h2 text-center">Skills</h2>
             <div 
                 [ngClass]="dataTheme === false? 'skills-card-dark': 'skills-card-light'"
-                class="row pt-5 pb-5 d-flex justify-content-center"
+                class="row mb-5 pt-t pb-5 d-flex justify-content-center"
                 *ngFor="let row of skill"
                 >
-                <div class="col-md-8">
+                <div class="">
                     <div class="container">
                         <h3 class="skill-title">{{row.nombre}}</h3>
                         <div class="progress">
@@ -21,6 +21,7 @@
                                 >
                             </div>
                         </div>
+                        
 
                         
                         <!-- Boton para editar el contenido-->
@@ -131,9 +132,14 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
+            
         </div>
+       
     </div>
+    
+    
 
     <!--Boton para agregar skill-->
     <div class="container d-flex justify-content-center">

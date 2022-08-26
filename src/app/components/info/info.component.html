@@ -5,7 +5,7 @@
             <div class="col-sm-6">
                 <div id="info" class="container-fluid">
                     <div class="imagen">
-                        <div [style]="imgEstilo" class="imagen-perfil" >
+                        <div class="imagen-perfil" >
                             <div id="pencil" class="container d-flex justify-content-center align-items-center">
                             </div>
                         </div>
@@ -14,13 +14,13 @@
             </div>
 
             <div class="col-sm-6 info-container d-flex align-items-center">
-                <div>
+                <div class="info-box">
                     <div *ngFor="let row of infoPersonal">
                         <p id="name">{{row.nombreInfo}}</p>
                         <p id="profesion">{{row.titulo}}</p>
-                        <p class="pt-5">{{row.descripcion}}</p>
-                        <p class="pt-5">{{row.ciudad}}</p>
-                        <p class="pt-5">{{row.fechaNac}}</p>
+                        <p id="desc-info"  class="mt-5">{{row.descripcion}}</p>
+                        <p id="ciudad"  class="mt-5"><span>Ciudad: </span>{{row.ciudad}}</p>
+                        <p id="fechaNac"  class="mt-5"><span>Fecha de Nac.: </span>{{row.fechaNac}}</p>
                     </div>
                     
                     

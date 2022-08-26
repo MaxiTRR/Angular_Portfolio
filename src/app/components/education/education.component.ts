@@ -77,7 +77,7 @@ export class EducationComponent implements OnInit {
     );
   }
 
-  onUpdate(id:any){
+  onUpdate(id:any):void{
     this.educationService.update(id, this.eduToUpdate).subscribe(
       data=>{
         this.cargarEducation();

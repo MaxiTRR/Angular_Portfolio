@@ -9,32 +9,32 @@
                         class="card mx-auto"
                         style="width: 18rem;"
                         id="edu-card"
-                        
                         >
+
                         <img class="card-img-top mx-auto" id="udemy" [src]="row.logoEdu">
+                        
                         <div [ngClass]="dataTheme === false? 'edu-card-dark': 'edu-card-light'">
                             <h5 class="card-title">{{row.nombreInst}}</h5>
                             <p class="card-text">{{row.periodoEdu}}</p>
                             <p class="card-text">{{row.tituloEdu}}</p>
                             <p class="card-text">{{row.descripcionEdu}}</p>
 
-
                             <!-- Boton para editar el contenido-->
                             <button
-                                [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'" 
+                                [ngClass]="dataTheme === false? 'btn-icon-darkedit': 'btn-icon-lightedit'" 
                                 id="edit" 
                                 type="button" 
                                 class="btn" data-bs-toggle="modal"
                                 data-bs-target="#exampleModalEduEdit"
                                 (click)="findEducation(row.id)"
                                 *ngIf="isLogged"
-                            >
+                                >
                                 <fa-icon [icon]="faPencil"></fa-icon>
                             </button>
 
                             <!-- Boton para eliminar el contenido-->
                             <button 
-                                [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'"
+                                [ngClass]="dataTheme === false? 'btn-icon-darkedit': 'btn-icon-lightedit'"
                                 id="delete" 
                                 type="button"
                                 class="btn"
@@ -45,26 +45,21 @@
                             </button>
                         </div>
                     </div>
+                    <br><br>
                 </div>
             </div>
         
-            
-
-             <!--Boton para agregar estudio-->
+            <!--Boton para agregar estudio-->
             <button 
                 *ngIf="isLogged"
-                [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'"
+                [ngClass]="dataTheme === false? 'btn-icon-darkedit': 'btn-icon-lightedit'"
                 class="btn-add-new"
                 data-bs-toggle="modal" data-bs-target="#exampleModalEdu"
-                
                 >
                 Añadir nuevo estudio
             </button>
         </div>
         
-
-       
-
         <!-- Modal para agregar Education -->
         <div class="modal fade" id="exampleModalEdu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -98,16 +93,16 @@
                                 <button type="button" id="cancelEdu" class="btn btn-secondary" data-bs-dismiss="modal">
                                     Cancelar
                                 </button>
-                                <button 
+                                <button
+                                    type="submit"
                                     class="btn btn-primary"
+                                    data-bs-dismiss="modal"
                                     >
                                     Actualizar
                                 </button>
                             </div>
                         </form>
-                    ...
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -148,14 +143,13 @@
                                 <button 
                                     type="submit"
                                     class="btn btn-primary"
+                                    data-bs-dismiss="modal"
                                     >
                                     Actualizar
                                 </button>
                             </div>
                         </form>
-                    ...
                     </div>
-                    
                 </div>
             </div>
         </div>
